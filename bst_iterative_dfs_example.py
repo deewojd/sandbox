@@ -2,7 +2,6 @@
 """
 Time Complexity:
 - O(log n) average case (balanced BST)
-- O(n) worst case (skewed BST)
 
 Space Complexity:
 - O(1) average and worst case (iterative, no recursion stack)
@@ -25,7 +24,8 @@ class Node:
         self.right = None
 
 def build_balanced_bst(sorted_vals):
-    """Build a balanced BST from a sorted list.
+    """Build a balanced BST from a sorted list to avoid possibility 
+    of O(n) time complexity from skewed BST
     Note: List must be sorted for this method to work as intended."""
     if not sorted_vals:
         return None
