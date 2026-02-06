@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 
 # Interface Layer
-
 class Job(ABC):
     """Abstract interface representing a data processing job."""
     
@@ -22,7 +21,6 @@ class Router(ABC):
         pass
 
 # Concrete Jobs
-
 class ETLJob(Job):
     def update(self, filename: str) -> None:
         print(f"ETLJob: Processing {filename}")
@@ -40,7 +38,6 @@ class ValidationJob(Job):
         print(f"ValidationJob: Validating {filename}")
 
 # Router
-
 class JobRouter(Router):
     """Maps filenames to registered jobs dynamically."""
     
@@ -57,7 +54,6 @@ class JobRouter(Router):
         return None
 
 # Data Producer
-
 class DataProducer:
     """Produces data events and automatically decides batch vs streaming."""
     
@@ -71,7 +67,7 @@ class DataProducer:
         for filename in filenames:
             if "stream" in filename.lower():
                 print(f"\nDataProducer (streaming): New file -> {filename}")
-                yield filename  # streaming: caller can handle incrementally
+                yield filename  # Streaming: caller can handle incrementally
             else:
                 self.new_data_arrived(filename)
 
