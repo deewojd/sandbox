@@ -24,7 +24,7 @@ def load_to_warehouse(event):
 
 # Event router (simulates cloud event triggers)
 def event_router(event):
-    # Event triggered
+    # Event-triggered
     if event["type"] == "file_uploaded":
         transformed = transform_data(event)
         return load_to_warehouse(transformed)
