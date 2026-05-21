@@ -3,7 +3,6 @@ from abc import ABC, abstractmethod
 # Interface Layer
 class Job(ABC):
     """Abstract interface representing a data processing job."""
-    
     @abstractmethod
     def update(self, filename: str) -> None:
         """Defines how a job handles a new data file."""
@@ -11,7 +10,6 @@ class Job(ABC):
 
 class Router(ABC):
     """Abstract interface for routing files to appropriate jobs."""
-    
     @abstractmethod
     def register_job(self, keyword: str, job_instance: Job) -> None:
         pass
@@ -40,7 +38,6 @@ class ValidationJob(Job):
 # Router
 class JobRouter(Router):
     """Maps filenames to registered jobs dynamically."""
-    
     def __init__(self) -> None:
         self.jobs: dict[str, Job] = {}
 
@@ -56,7 +53,6 @@ class JobRouter(Router):
 # Data Producer
 class DataProducer:
     """Produces data events and automatically decides batch vs streaming."""
-    
     def __init__(self, router: Router):
         self.router = router
 
